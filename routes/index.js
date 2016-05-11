@@ -30,13 +30,10 @@ router.get('/shows/:id', function(req, res, next) {
 router.post('/shows', function(req, res, next) {
   queries.add(req.body)
   .then(function(showID) {
-    queries.getSingle(showID)
-    .then(function(show) {
-      res.status(200).json(show);
-    })
-    .catch(function(error) {
-      next(error);
-    });
+    return queries.getSingle(showID);
+  })
+  .then(function(show) {
+    res.json(show);
   })
   .catch(function(error) {
     next(error);
@@ -52,14 +49,12 @@ router.put('/shows/:id', function(req, res, next) {
   }
   queries.update(req.params.id, req.body)
   .then(function() {
-    queries.getSingle(req.params.id)
-    .then(function(show) {
-      res.status(200).json(show);
-    })
-    .catch(function(error) {
-      next(error);
-    });
-  }).catch(function(error) {
+    return queries.getSingle(req.params.id);
+  })
+  .then(function(show) {
+    res.status(200).json(show);
+  })
+  .catch(function(error) {
     next(error);
   });
 });
