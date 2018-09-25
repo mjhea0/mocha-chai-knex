@@ -1,0 +1,16 @@
+{
+  "name": "mocha-chai-knex",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
