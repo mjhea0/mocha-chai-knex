@@ -5,7 +5,7 @@ var queries = require('../db/queries');
 
 
 // *** GET all shows *** //
-router.get('/shows', function(req, res, next) {
+router.get('/orders', function(req, res, next) {
   queries.getAll()
   .then(function(shows) {
     res.status(200).json(shows);
@@ -16,7 +16,7 @@ router.get('/shows', function(req, res, next) {
 });
 
 // *** GET single show *** //
-router.get('/shows/:id', function(req, res, next) {
+router.get('/orders/:id', function(req, res, next) {
   queries.getSingle(req.params.id)
   .then(function(show) {
     res.status(200).json(show);
@@ -27,7 +27,7 @@ router.get('/shows/:id', function(req, res, next) {
 });
 
 // *** add show *** //
-router.post('/shows', function(req, res, next) {
+router.post('/orders', function(req, res, next) {
   queries.add(req.body)
   .then(function(showID) {
     return queries.getSingle(showID);
@@ -41,7 +41,7 @@ router.post('/shows', function(req, res, next) {
 });
 
 // *** update show *** //
-router.put('/shows/:id', function(req, res, next) {
+router.put('/orders/:id', function(req, res, next) {
   if(req.body.hasOwnProperty('id')) {
     return res.status(422).json({
       error: 'You cannot update the id field'
@@ -60,7 +60,7 @@ router.put('/shows/:id', function(req, res, next) {
 });
 
 // *** delete show *** //
-router.delete('/shows/:id', function(req, res, next) {
+router.delete('/orders/:id', function(req, res, next) {
   queries.getSingle(req.params.id)
   .then(function(show) {
     queries.deleteItem(req.params.id)

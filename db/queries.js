@@ -1,29 +1,29 @@
 var knex = require('./knex.js');
 
-function Shows() {
-  return knex('shows');
+function Order() {
+  return knex('salesforce.order');
 }
 
 // *** queries *** //
 
 function getAll() {
-  return Shows().select();
+  return Order().select();
 }
 
-function getSingle(showID) {
-  return Shows().where('id', parseInt(showID)).first();
+function getSingle(orderId) {
+  return Order().where('id', parseInt(orderId)).first();
 }
 
-function add(show) {
-  return Shows().insert(show, 'id');
+function add(order) {
+  return Order().insert(order, 'id');
 }
 
-function update(showID, updates) {
-  return Shows().where('id', parseInt(showID)).update(updates);
+function update(orderId, updates) {
+  return Order().where('id', parseInt(orderId)).update(updates);
 }
 
-function deleteItem(showID) {
-  return Shows().where('id', parseInt(showID)).del();
+function deleteItem(orderId) {
+  return Order().where('id', parseInt(orderId)).del();
 }
 
 
