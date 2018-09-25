@@ -1,7 +1,7 @@
 module.exports = {
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/mocha_chai_tv_shows_test',
+    connection: 'postgres://localhost/order_information_api_jesse_test',
     migrations: {
       directory: __dirname + '/db/migrations'
     },
@@ -11,7 +11,7 @@ module.exports = {
   },
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/mocha_chai_tv_shows',
+    connection: 'postgres://localhost/order_information_api_jesse',
     migrations: {
       directory: __dirname + '/db/migrations'
     },
